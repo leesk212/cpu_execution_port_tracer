@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import sys
 
 times = []
 uop_0 = []
@@ -9,9 +8,10 @@ uop_3 = []
 
 uops = [uop_0, uop_1, uop_2, uop_3]
 
+legend = []
+init_flag = 0
 
-
-# FIle open through 5s
+# FIle open through 10s
 for time in range(0, 1000):
     #print(time)
     FILE_NAME = './tmp/tmp_log_' + str(time) + '.txt'
@@ -20,6 +20,26 @@ for time in range(0, 1000):
     times.append(time)
 
     for core, line in enumerate(lines):
+        if core == 1 and init_flag == 0: # column
+            # Take port_name legend 
+            line = line.strip().split(' ')
+
+            column = []
+            for each in line:
+                if len(each) > 0:
+                    column.append(each)
+            column = column[1:]
+
+            port_name = []
+            for index, each in enumerate(column):
+                if index % 2 == 1:
+                    port_name.append(each)
+            for _ in port_name:
+                legend_ = 'uop_'+_
+                legend.append(legend_)
+                print(legend_)
+            init_flag += 1
+
         if core > 1:  # Erase first \n and column
             line = line.strip().split(' ')  # Erase \n on end of string
             cycle = []
@@ -43,10 +63,10 @@ for core in range(8):
             if index_2 % 8 == core:
                 ports[index].append(int(each))
 
-    plt.plot(times, port0, label='uop0')
-    plt.plot(times, port1, label='uop1')
-    plt.plot(times, port2, label='uop2')
-    plt.plot(times, port3, label='uop3')
+    plt.plot(times, port0, label=legend[0])
+    plt.plot(times, port1, label=legend[1])
+    plt.plot(times, port2, label=legend[2])
+    plt.plot(times, port3, label=legend[3])
     plt.title('Core '+str(core))
     plt.legend()
     plt.savefig('./result_png/trace_result_core_'+str(core))

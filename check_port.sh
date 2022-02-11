@@ -1,6 +1,6 @@
 #!/bin/bash
 
-StartTime=$(date +%s)
+#StartTime=$(date +%s)
 number=0
 
 echo "MSR Driver loading"
@@ -15,8 +15,8 @@ do
     sleep 0.01
     ((number++))
     
-    time=$(date +%s)
-    echo "Elapsed_Time: $(($time - $StartTime))" 
+    #time=$(date +%s)
+    #echo "Elapsed_Time: $(($time - $StartTime))" 
 done
 
 echo "Detection Finish"
