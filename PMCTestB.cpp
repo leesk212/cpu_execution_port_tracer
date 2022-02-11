@@ -64,10 +64,10 @@
 
 extern "C" {
     int CounterTypesDesired[MAXCOUNTERS] = {
-        154,      // core clock cycles (Intel Core 2 and later)
-        155,      // instructions (not P4)
-        156,    // micro-operations
-        157,
+        150,      // core clock cycles (Intel Core 2 and later)
+        151,      // instructions (not P4)
+        152,    // micro-operations
+        153,
     };
 }
 
