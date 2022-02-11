@@ -11,9 +11,9 @@ uops = [uop_0, uop_1, uop_2, uop_3]
 
 
 
-# FIle open through 60s
-for time in range(0, 600):
-    print(time)
+# FIle open through 5s
+for time in range(0, 1000):
+    #print(time)
     FILE_NAME = './tmp/tmp_log_' + str(time) + '.txt'
     fd = open(FILE_NAME)
     lines = fd.readlines()
