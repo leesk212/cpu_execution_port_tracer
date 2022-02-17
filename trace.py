@@ -63,10 +63,10 @@ for core in range(8):
             if index_2 % 8 == core:
                 ports[index].append(int(each))
 
-    #plt.plot(times, port0, label=legend[0], color='blue')
-    #plt.plot(times, port1, label=legend[1], color='orange')
-    #plt.plot(times, port2, label=legend[2], color='green')
-    plt.plot(times, port3, label=legend[3], color='red')
+    #plt.plot(times, port0, label=legend[0], color='aqua')
+    #plt.plot(times, port1, label=legend[1], color='magenta')
+    #plt.plot(times, port2, label=legend[2], color='navy')
+    plt.plot(times, port3, label=legend[3], color='darkviolet')
     plt.title('Core '+str(core))
     plt.legend()
     plt.savefig('./result_png/trace_result_core_'+str(core))
