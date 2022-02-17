@@ -12,7 +12,7 @@ legend = []
 init_flag = 0
 
 # FIle open through 10s
-for time in range(0, 1000):
+for time in range(0, 6000):
     #print(time)
     FILE_NAME = './tmp/tmp_log_' + str(time) + '.txt'
     fd = open(FILE_NAME)

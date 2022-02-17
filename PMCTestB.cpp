@@ -226,7 +226,7 @@ int TestLoop (int thread) {
         // or a call to a function defined in a separate module
         //��
 
-        for (i = 0; i < 1000; i++) UserData[thread][i] *= 99;
+        //for (i = 0; i < 1000; i++) UserData[thread][i] *= 99;
 
 
         /*############################################################################

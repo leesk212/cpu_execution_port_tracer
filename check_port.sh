@@ -20,7 +20,7 @@ fi
 
 echo "Detection Start"
 
-while [ ${number} -le 1000 ]
+while [ ${number} -le 6000 ]
 do	
     ./pmc_test2 > ./tmp/tmp_log_${number}.txt
     sleep 0.01
