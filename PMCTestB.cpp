@@ -141,7 +141,9 @@ int TestLoop (int thread) {
 
     for (i = 0; i < MAXCOUNTERS+1; i++) {
         ThreadData[thread].CountOverhead[i] = 0x7FFFFFFF;
+	printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
     }
+
 
     /*############################################################################
     #
@@ -167,6 +169,7 @@ int TestLoop (int thread) {
 #if USE_PERFORMANCE_COUNTERS
         // Read counters
         for (i = 0; i < MAXCOUNTERS; i++) {
+	    //printf("Counters[i]: %d",Counters[i]);
             ThreadData[thread].CountTemp[i+1] = (int)Readpmc(Counters[i]);
         }
 #endif
@@ -174,6 +177,7 @@ int TestLoop (int thread) {
         Serialize();
         ThreadData[thread].CountTemp[0] = (int)Readtsc();
         Serialize();
+	//printf("%d\n",ThreadData[thread].CountTemp[0]);
 
         // no test code here
 
@@ -194,6 +198,7 @@ int TestLoop (int thread) {
             if (-ThreadData[thread].CountTemp[i] < ThreadData[thread].CountOverhead[i]) {
                 ThreadData[thread].CountOverhead[i] = -ThreadData[thread].CountTemp[i];
             }
+	    printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
         }
     }
 
@@ -201,7 +206,6 @@ int TestLoop (int thread) {
     // Second test loop. Includes code to test.
     // This must be identical to first test loop, except for the test code
     for (repi = 0; repi < REPETITIONS; repi++) {
-
         Serialize();
 
 #if USE_PERFORMANCE_COUNTERS
@@ -222,13 +226,6 @@ int TestLoop (int thread) {
         #
         ############################################################################*/
 
-        // Put the code to test here,
-        // or a call to a function defined in a separate module
-        //��
-
-        //for (i = 0; i < 1000; i++) UserData[thread][i] *= 99;
-
-
         /*############################################################################
         #
         #        Test code end
@@ -248,9 +245,9 @@ int TestLoop (int thread) {
         Serialize();
 
         // subtract overhead
-        ThreadData[thread].ClockResults[repi] = -ThreadData[thread].CountTemp[0] - ThreadData[thread].CountOverhead[0];
+        ThreadData[thread].ClockResults[repi] = -ThreadData[thread].CountTemp[0];
         for (i = 0; i < MAXCOUNTERS; i++) {
-            ThreadData[thread].PMCResults[repi+i*REPETITIONS] = -ThreadData[thread].CountTemp[i+1] - ThreadData[thread].CountOverhead[i+1];
+            ThreadData[thread].PMCResults[repi+i*REPETITIONS] = -ThreadData[thread].CountTemp[i+1];
         }
     }
 

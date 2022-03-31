@@ -1,1 +1,1 @@
-cmd_/home/csl/Desktop/Driver_linux/MSRdrv.mod := { echo  /home/csl/Desktop/Driver_linux/MSRdrv.o;  echo; } > /home/csl/Desktop/Driver_linux/MSRdrv.mod
+cmd_/home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/MSRdrv.mod := { echo  /home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/MSRdrv.o;  echo; } > /home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/MSRdrv.mod
