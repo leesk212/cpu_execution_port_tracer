@@ -144,7 +144,7 @@ for init, core in enumerate(range(8)):
     plt.show()
 
 
-df = pd.DataFrame(temp_array)
+df = pd.DataFrame(temp_array.T)
 df.to_csv('sample.csv',index=False)
 
 
