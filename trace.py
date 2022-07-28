@@ -137,11 +137,17 @@ for init, core in enumerate(range(8)):
 
 
         print(temp_array.shape)
+
     
     plt.title('Core '+str(core))
     plt.legend()
     plt.savefig('./result_png/trace_result_core_'+str(core))
     plt.show()
+
+temp_array = temp_array.T
+print(temp_array.shape)
+
+
 
 
 df = pd.DataFrame(temp_array.T)
