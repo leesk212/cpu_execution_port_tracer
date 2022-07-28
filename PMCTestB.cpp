@@ -141,9 +141,8 @@ int TestLoop (int thread) {
 
     for (i = 0; i < MAXCOUNTERS+1; i++) {
         ThreadData[thread].CountOverhead[i] = 0x7FFFFFFF;
-	printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
+	//printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
     }
-
 
     /*############################################################################
     #
@@ -152,7 +151,6 @@ int TestLoop (int thread) {
     ############################################################################*/
 
     // place any user initializations here:
-
 
     /*############################################################################
     #
@@ -180,7 +178,6 @@ int TestLoop (int thread) {
 	//printf("%d\n",ThreadData[thread].CountTemp[0]);
 
         // no test code here
-
         Serialize();
         ThreadData[thread].CountTemp[0] -= (int)Readtsc();
         Serialize();
@@ -192,16 +189,14 @@ int TestLoop (int thread) {
         }
 #endif
         Serialize();
-
         // find minimum counts
         for (i = 0; i < MAXCOUNTERS+1; i++) {
             if (-ThreadData[thread].CountTemp[i] < ThreadData[thread].CountOverhead[i]) {
                 ThreadData[thread].CountOverhead[i] = -ThreadData[thread].CountTemp[i];
             }
-	    printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
+	   // printf("[^]CounterOverhead[%d]: %x\n",i,ThreadData[thread].CountOverhead[i]);
         }
     }
-
 
     // Second test loop. Includes code to test.
     // This must be identical to first test loop, except for the test code
@@ -218,7 +213,6 @@ int TestLoop (int thread) {
         Serialize();
         ThreadData[thread].CountTemp[0] = (int)Readtsc();
         Serialize();
-
 
         /*############################################################################
         #
@@ -243,14 +237,12 @@ int TestLoop (int thread) {
         }
 #endif
         Serialize();
-
         // subtract overhead
         ThreadData[thread].ClockResults[repi] = -ThreadData[thread].CountTemp[0];
         for (i = 0; i < MAXCOUNTERS; i++) {
             ThreadData[thread].PMCResults[repi+i*REPETITIONS] = -ThreadData[thread].CountTemp[i+1];
         }
     }
-
     // return
     return REPETITIONS;
 }

@@ -1,1 +1,1 @@
-cmd_/home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/modules.order := {   echo /home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/MSRdrv.ko; :; } | awk '!x[$$0]++' - > /home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/modules.order
+cmd_/home/csl/Desktop/cpu_execution_port_tracer/Driver_linux/modules.order := {   echo /home/csl/Desktop/cpu_execution_port_tracer/Driver_linux/MSRdrv.ko; :; } | awk '!x[$$0]++' - > /home/csl/Desktop/cpu_execution_port_tracer/Driver_linux/modules.order

@@ -1,2 +1,2 @@
-/home/csl/Desktop/new/cpu_execution_port_tracer/Driver_linux/MSRdrv.o
+/home/csl/Desktop/cpu_execution_port_tracer/Driver_linux/MSRdrv.o
 

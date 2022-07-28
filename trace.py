@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 times = []
 uop_0 = []
@@ -95,8 +97,10 @@ for time in range(0, 10000):
 
 print("|||||||||||||||||||||||before|||||||||||||||||||||||")
 
+temp_array = np.empty((0,10000),int)
+
 # Distribution by CPU core
-for core in range(8):
+for init, core in enumerate(range(8)):
     port0 = []
     port1 = []
     port2 = []
@@ -111,11 +115,37 @@ for core in range(8):
         for index_2, each in enumerate(uop):
             if index_2 % 8 == core:
                 ports[index].append(int(each))
-    
-    for i in range(8):
+   
+    #check
+    for _ in range(8):
+        print(len(ports[_]))
+
+
+    for init2, i in enumerate(range(8)):
+        if len(ports[i]) != len(times):
+            for k in range(len(times)-len(ports[i])):
+                ports[i].append(0)
+
         plt.plot(times, ports[i], label=legend[i])
+
+        temp_array = np.append(temp_array,np.array([ports[i]]),axis=0)
+
+        #if init == 0 and init2 == 0:
+        #    temp_array = temp_array + array
+        #else:
+        #    temp_array = np.append(temp_array,array,axis=1)
+
+
+        print(temp_array.shape)
     
     plt.title('Core '+str(core))
     plt.legend()
     plt.savefig('./result_png/trace_result_core_'+str(core))
     plt.show()
+
+
+df = pd.DataFrame(temp_array)
+df.to_csv('sample.csv',index=False)
+
+
+
