@@ -150,7 +150,7 @@ print(temp_array.shape)
 
 
 
-df = pd.DataFrame(temp_array.T)
+df = pd.DataFrame(temp_array)
 df.to_csv('sample.csv',index=False)
 
 
