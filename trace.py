@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import sys
 
 times = []
 uop_0 = []
@@ -151,11 +152,11 @@ print(temp_array.shape)
 
 
 df = pd.DataFrame(temp_array)
-df.to_csv('sample.csv',index=False)
+df.to_csv(sys.argv[1])
 
-df2=pd.read_csv('sample.csv')
+#df2=pd.read_csv('sample.csv')
 
-df2 = df.transpose()
+#f2 = df.transpose()
 
-df2.to_csv('sample2.csv')
+#df2.to_csv('sample2.csv')
 

@@ -18,4 +18,4 @@ done
 
 echo "Detection Finish"
 echo "Print Plot"
-taskset -c 15 python trace.py
+taskset -c 15 python trace.py $1
