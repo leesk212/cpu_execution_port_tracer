@@ -157,5 +157,5 @@ df2=pd.read_csv('sample.csv')
 
 df2 = df.transpose()
 
-df2.to_csv('sample2.csv',index=False)
+df2.to_csv('sample2.csv')
 
