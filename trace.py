@@ -153,5 +153,9 @@ print(temp_array.shape)
 df = pd.DataFrame(temp_array)
 df.to_csv('sample.csv',index=False)
 
+df2=pd.read_csv('sample.csv')
 
+df2 = df.transpose()
+
+df2.to_csv('sample2.csv',index=False)
 
