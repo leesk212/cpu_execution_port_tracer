@@ -152,7 +152,7 @@ print(temp_array.shape)
 
 
 df = pd.DataFrame(temp_array)
-df.to_csv('./result'+sys.argv[1])
+df.to_csv('./result/'+sys.argv[1])
 
 #df2=pd.read_csv('sample.csv')
 
