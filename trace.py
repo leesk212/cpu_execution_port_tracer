@@ -143,7 +143,7 @@ for init, core in enumerate(range(8)):
     plt.title('Core '+str(core))
     plt.legend()
     plt.savefig('./result_png/trace_result_core_'+str(core))
-    plt.show()
+    #plt.show()
 
 temp_array = temp_array.T
 print(temp_array.shape)
@@ -152,7 +152,7 @@ print(temp_array.shape)
 
 
 df = pd.DataFrame(temp_array)
-df.to_csv(sys.argv[1])
+df.to_csv('./result'+sys.argv[1])
 
 #df2=pd.read_csv('sample.csv')
 
