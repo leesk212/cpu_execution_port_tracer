@@ -262,7 +262,7 @@ int main(int argc, char* argv[]) {
                 if (SyS::TestProcessMask(p, &ProcessAffMask)) printf("%i  ", p);
             }
             printf("\n");
-            return 1;
+	    //return 1;
         }
     }
 

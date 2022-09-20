@@ -110,26 +110,29 @@ namespace SyS {  // system-specific interface functions
     // Get mask of possible CPU cores
     static inline ProcMaskType GetProcessMask() {
         ProcMaskType ProcessAffMask;
-        CPU_ZERO(&ProcessAffMask);
-        int e = sched_getaffinity(0, sizeof(ProcMaskType), &ProcessAffMask);
-        if (e) printf("\nsched_getaffinity failed");
+        //CPU_ZERO(&ProcessAffMask);
+        //int e = sched_getaffinity(0, sizeof(ProcMaskType), &ProcessAffMask);
+        //int e = 1;
+        //if (e) printf("\nsched_getaffinity failed");
         return ProcessAffMask;
     }
 
     // Set CPU to run on specified CPU core (0 based number)
     static inline void SetProcessMask(int p) {
         ProcMaskType mask;
-        CPU_ZERO(&mask);
-        CPU_SET(p, &mask);
-        int e = sched_setaffinity(gettid(), sizeof(ProcMaskType), &mask);
-        if (e) {
-            printf("\nFailed to lock thread to processor %i\n", p);
-        }
+        //CPU_ZERO(&mask);
+        //CPU_SET(p, &mask);
+        //CPU_SET(1, &mask);
+        //int e = sched_setaffinity(gettid(), sizeof(ProcMaskType), &mask);
+        //if (e) {
+        //    printf("\nFailed to lock thread to processor %i\n", p);
+        //}
     }
 
     // Test if specified CPU core is available
     static inline int TestProcessMask(int p, ProcMaskType * m) {
-        return CPU_ISSET(p, m);
+	//return CPU_ISSET(p, m);
+        return 1;
     }
 
     // Sleep for the rest of current timeslice
