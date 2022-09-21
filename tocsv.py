@@ -17,7 +17,7 @@ uop_7 = []
 uops = [uop_0, uop_1, uop_2, uop_3,uop_4,uop_5,uop_6,uop_7]
 
 for time in range(0,10000):
-    times.append(str(time)) 
+    times.append(time) 
     FILE_NAME = '/home/csl/Desktop/test_cpu_execution_port_tracer/cpu_execution_port_tracer/monitering_result/'+str(time)+'.txt'
     fd = open(FILE_NAME)
     lines = fd.readlines()
@@ -42,6 +42,7 @@ for each_ops in uops:
     print(each_ops)
 
 
+
 plt.title('Core 0')
 plt.plot(times,uop_0,label='uop_0')
 plt.plot(times,uop_1,label='uop_1')
@@ -53,6 +54,8 @@ plt.plot(times,uop_6,label='uop_6')
 plt.plot(times,uop_7,label='uop_7')
 plt.legend()
 plt.grid()
-plt.show() 
+plt.show()
+
+
 
 
