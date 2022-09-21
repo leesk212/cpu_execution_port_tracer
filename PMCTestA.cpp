@@ -302,13 +302,13 @@ int main(int argc, char* argv[]) {
 
         // print column headings
         if (NumThreads > 1) printf("\nProcessor %i", ProcNum[t]);
-        printf("\n     Clock ");
+        //printf("\n     Clock ");
         if (UsePMC) {
             if (MSRCounters.MScheme == S_AMD2) {
                 printf("%10s ", "Corrected");
             }
             for (i = 0; i < NumCounters; i++) {
-                printf("%10s ", MSRCounters.CounterNames[i]);
+                //printf("%10s ", MSRCounters.CounterNames[i]);
             }
         }
         if (RatioOut[0]) printf("%10s ", RatioOutTitle ? RatioOutTitle : "Ratio");
@@ -317,13 +317,13 @@ int main(int argc, char* argv[]) {
         // print counter outputs
         for (repi = 0; repi < repetitions; repi++) {
             int tscClock = PThreadData[repi+TOffset+ClockOS];
-            printf("\n%10i ", tscClock);
+	    //printf("%10i ", tscClock);
             if (UsePMC) {
                 if (MSRCounters.MScheme == S_AMD2) {
                     printf("%10i ", int(tscClock * clockFactor[t] + 0.5)); // Calculated core clock count
                 }
                 for (i = 0; i < NumCounters; i++) {         
-                    printf("%10i ", PThreadData[repi+i*repetitions+TOffset+PMCOS]);
+                    printf("%3i ", PThreadData[repi+i*repetitions+TOffset+PMCOS]);
                 }
             }
             // optional ratio output
@@ -399,7 +399,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    printf("\n");
+   // printf("\n");
     // Optional: wait for key press
     //printf("\npress any key");
     //getch();
